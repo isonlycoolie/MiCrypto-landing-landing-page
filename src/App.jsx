@@ -2,6 +2,7 @@ import React from 'react'
 import NavBar from './components/navBar'
 import HeroSection from './components/HeroSection'
 import CardsSection from './components/CardsSection'
+import AnalyticsSection from './components/AnalyticsSection'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <NavBar />
       <HeroSection />
       <CardsSection />
+      <AnalyticsSection />
     </div>
   )
 }
