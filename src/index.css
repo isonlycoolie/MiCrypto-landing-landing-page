@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Modern Negra';
+  src: url('/fonts/Modern Negra Demo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-section {
+    @apply bg-gray-50 w-full;
+  }
+
+  /* Typography Utilities */
+  .hero-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight;
+  }
+
+  .hero-description {
+    @apply text-lg md:text-xl text-gray-600 leading-relaxed;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight;
+  }
+
+  .section-description {
+    @apply text-base md:text-lg text-gray-600 leading-relaxed;
+  }
+
+  /* Link Styles */
+  .link-primary {
+    @apply text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200;
+  }
+
+  .link-secondary {
+    @apply text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200;
+  }
+}
