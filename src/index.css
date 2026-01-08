@@ -9,40 +9,41 @@
 
 @layer base {
   body {
-    @apply bg-gray-50;
+    @apply bg-gray-50 dark:bg-gray-900;
     font-family: 'Montserrat', sans-serif;
+    @apply transition-colors duration-200;
   }
 }
 
 @layer components {
   /* Hero Section Styles */
   .hero-section {
-    @apply bg-gray-50 w-full;
+    @apply bg-gray-50 dark:bg-gray-900 w-full;
   }
 
   /* Typography Utilities */
   .hero-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight;
   }
 
   .hero-description {
-    @apply text-lg md:text-xl text-gray-600 leading-relaxed;
+    @apply text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight;
   }
 
   .section-description {
-    @apply text-base md:text-lg text-gray-600 leading-relaxed;
+    @apply text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed;
   }
 
   /* Link Styles */
   .link-primary {
-    @apply text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200;
+    @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 font-medium transition-colors duration-200;
   }
 
   .link-secondary {
-    @apply text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200;
+    @apply text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium transition-colors duration-200;
   }
 }

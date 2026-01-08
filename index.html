@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/images/logo.png" />
@@ -9,5 +9,10 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Clear any persisted dark mode on page load
+      localStorage.removeItem('darkMode');
+      document.documentElement.classList.remove('dark');
+    </script>
   </body>
 </html>

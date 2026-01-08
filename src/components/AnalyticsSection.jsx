@@ -55,10 +55,10 @@ function AnalyticsSection() {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white px-4 py-3 rounded-lg shadow-lg border border-gray-200">
-          <p className="text-sm font-semibold text-gray-900 mb-2">{label}</p>
+        <div className="bg-white dark:bg-gray-800 px-4 py-3 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+          <p className="text-sm font-semibold text-gray-900 dark:text-white mb-2">{label}</p>
           {payload.map((entry, index) => (
-            <p key={index} className="text-xs text-gray-600">
+            <p key={index} className="text-xs text-gray-600 dark:text-gray-300">
               <span style={{ color: entry.color }}>●</span>{' '}
               {entry.name}: {entry.value.toLocaleString()} users
             </p>
@@ -70,12 +70,12 @@ function AnalyticsSection() {
   };
 
   return (
-    <section className="w-full bg-gray-50 py-12">
+    <section className="w-full bg-gray-50 dark:bg-gray-900 py-12 transition-colors duration-200">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section Header */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Analytics Overview</h2>
-          <p className="text-base text-gray-600">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Analytics Overview</h2>
+          <p className="text-base text-gray-600 dark:text-gray-300">
             Track the growth and performance of MiCrypto services across different metrics
           </p>
         </div>
@@ -83,9 +83,9 @@ function AnalyticsSection() {
         {/* Analytics Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left Side - Area Chart */}
-          <div className="bg-white rounded-lg p-6 border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Remote Users Growth (2020-2025)
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              Remote Users Growth
             </h3>
             <ResponsiveContainer width="100%" height={320}>
               <AreaChart
@@ -151,8 +151,8 @@ function AnalyticsSection() {
           </div>
 
           {/* Right Side - Radial Chart */}
-          <div className="bg-white rounded-lg p-6 border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Service Usage Distribution
             </h3>
             <ResponsiveContainer width="100%" height={320}>
@@ -181,11 +181,11 @@ function AnalyticsSection() {
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {
                       return (
-                        <div className="bg-white px-3 py-2 rounded-lg shadow-lg border border-gray-200">
-                          <p className="text-xs font-semibold text-gray-900">
+                        <div className="bg-white dark:bg-gray-800 px-3 py-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+                          <p className="text-xs font-semibold text-gray-900 dark:text-white">
                             {payload[0].name}
                           </p>
-                          <p className="text-xs text-gray-600">
+                          <p className="text-xs text-gray-600 dark:text-gray-300">
                             Usage: {payload[0].value}%
                           </p>
                         </div>
@@ -201,27 +201,27 @@ function AnalyticsSection() {
 
         {/* Key Insights */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
-            <p className="text-sm font-semibold text-gray-900 mb-1">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
               Crypto Remote Control
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 dark:text-gray-300">
               Leading service with 12.4K active users managing remote crypto operations
             </p>
           </div>
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
-            <p className="text-sm font-semibold text-gray-900 mb-1">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
               Business Podcast
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 dark:text-gray-300">
               8.6K subscribers broadcasting worldwide with single-machine efficiency
             </p>
           </div>
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
-            <p className="text-sm font-semibold text-gray-900 mb-1">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
               NFT Market Analysis
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 dark:text-gray-300">
               7.6K users leveraging advanced analytics for market insights
             </p>
           </div>

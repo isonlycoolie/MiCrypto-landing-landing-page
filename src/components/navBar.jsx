@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { IoMdGlobe, IoMdNotifications } from 'react-icons/io';
+import { IoMdGlobe, IoMdNotifications, IoMdMoon, IoMdSunny } from 'react-icons/io';
 import { navLinks } from '../../constants';
+import { useDarkMode } from '../context/DarkModeContext';
 
 function NavBar() {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   const languages = ['English', 'Swahili'];
 
@@ -14,7 +16,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="w-full bg-gray-50 border-b border-gray-200 shadow-sm">
+    <nav className="w-full bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-6 py-2">
         <div className="flex items-center justify-between">
           {/* Left Section - Logo & Brand Name */}
@@ -24,7 +26,7 @@ function NavBar() {
               alt="Masaki Restaurant Logo"
               className="h-8 w-8 object-contain"
             />
-            <span className="text-xl font-semibold text-gray-900">
+            <span className="text-xl font-semibold text-gray-900 dark:text-white">
               MiCyrpto
             </span>
           </div>
@@ -34,7 +36,7 @@ function NavBar() {
             {/* Support Link */}
             <a
               href="/support"
-              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200"
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
             >
               Support
             </a>
@@ -43,7 +45,7 @@ function NavBar() {
             <div className="relative">
               <button
                 onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-                className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200 focus:outline-none"
+                className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 focus:outline-none"
               >
                 <IoMdGlobe className="h-5 w-5" />
                 <span>{selectedLanguage}</span>
@@ -66,15 +68,15 @@ function NavBar() {
 
               {/* Language Dropdown */}
               {isLanguageDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50">
                   {languages.map((language) => (
                     <button
                       key={language}
                       onClick={() => handleLanguageChange(language)}
-                      className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg ${
+                      className={`w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg ${
                         selectedLanguage === language
-                          ? 'text-gray-900 font-medium bg-gray-50'
-                          : 'text-gray-700'
+                          ? 'text-gray-900 dark:text-white font-medium bg-gray-50 dark:bg-gray-700'
+                          : 'text-gray-700 dark:text-gray-300'
                       }`}
                     >
                       {language}
@@ -84,13 +86,30 @@ function NavBar() {
               )}
             </div>
 
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={() => {
+                console.log('Button clicked!');
+                toggleDarkMode();
+              }}
+              className="p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
+              aria-label="Toggle dark mode"
+              type="button"
+            >
+              {isDarkMode ? (
+                <IoMdSunny className="h-5 w-5" />
+              ) : (
+                <IoMdMoon className="h-5 w-5" />
+              )}
+            </button>
+
             {/* List Your Requests Button */}
-            <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-1">
+            <button className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-transparent border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 focus:ring-offset-1">
               List your requests
             </button>
 
             {/* Notification Icon */}
-            <button className="relative p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
+            <button className="relative p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600">
               <IoMdNotifications className="h-6 w-6" />
               {/* Notification Badge - Optional */}
               <span className="absolute top-1 right-1 h-2 w-2 bg-green-500 rounded-full"></span>
@@ -101,7 +120,7 @@ function NavBar() {
               <img
                 src="/images/profile1.png"
                 alt="User Profile"
-                className="h-9 w-9 rounded-full object-cover border-2 border-gray-200 hover:border-gray-300 transition-colors duration-200"
+                className="h-9 w-9 rounded-full object-cover border-2 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors duration-200"
               />
             </button>
           </div>
