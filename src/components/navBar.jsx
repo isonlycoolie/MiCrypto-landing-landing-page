@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { IoMdGlobe, IoMdNotifications, IoMdMoon, IoMdSunny } from 'react-icons/io';
 import { navLinks } from '../../constants';
-import { useDarkMode } from '../context/DarkModeContext';
+import useDarkModeStore from '../store/useDarkModeStore';
 
 function NavBar() {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const isDarkMode = useDarkModeStore((state) => state.isDarkMode);
+  const toggleDarkMode = useDarkModeStore((state) => state.toggleDarkMode);
 
   const languages = ['English', 'Swahili'];
 
@@ -89,8 +90,10 @@ function NavBar() {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => {
-                console.log('Button clicked!');
+                console.log('Dark mode button clicked');
+                console.log('Current isDarkMode:', isDarkMode);
                 toggleDarkMode();
+                console.log('Toggle function called');
               }}
               className="p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
               aria-label="Toggle dark mode"
